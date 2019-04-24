@@ -57,6 +57,20 @@
             <version>1.8.0-beta4</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.atlassian.jira/jira-api -->
+        <dependency>
+            <groupId>net.rcarz</groupId>
+            <artifactId>jira-client</artifactId>
+            <version>0.5</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.6</version>
+        </dependency>
 
     </dependencies>
 
