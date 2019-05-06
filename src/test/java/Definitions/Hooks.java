@@ -26,6 +26,14 @@ public class Hooks {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+        //nodeURL = "http://localhost:4444/wd/hub";
+        //DesiredCapabilities capability = DesiredCapabilities.chrome();
+        //capability.setBrowserName("chrome");
+        //capability.setPlatform(Platform.WIN10);
+        //driver = new RemoteWebDriver(new URL(nodeURL), capability);
+        //driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), DesiredCapabilities capability = DesiredCapabilities.chrome() );
+        //driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
     @After
