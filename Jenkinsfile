@@ -1,38 +1,29 @@
 pipeline {
-    agent any
-    stages {
-        stage('Download Feature Files'){
-            steps {
-                downloadFeatureFiles serverAddress: 'http://35.235.105.137',
-                projectKey: 'TBDD',
-                targetPath:'src/test/resources/features'
-            }
-        }
-        stage('Clean Work Space'){
-            steps {
-                sh 'mvn clean'
-            }
-        }
-        stage('Integration Test') {
-          steps {
-            sh 'mvn install'
-          }
-        }
-        stage('Execute Running') {
-          steps {
-            sh 'mvn surefire:test -Dtest=Running_Buscar_Google'
-          }
-        }
+  agent any
+  stages {
+    stage('Download Feature Files') {
+      steps {
+        downloadFeatureFiles(serverAddress: 'http://35.235.105.137', projectKey: 'TBDD', targetPath: 'src/test/resources/features')
+      }
     }
-    post {
-        always {
-          archiveArtifacts(artifacts: 'target/', fingerprint: true)
-          junit 'target/cucumber.xml'
-          publishTestResults  serverAddress: 'http://35.235.105.137',
-                              projectKey: 'TBDD',
-                              filePath:'target/cucumber-report/cucumber.json',
-                              format: 'Cucumber',
-                              autoCreateTestCases: false
-        }
+    stage('Clean Work Space') {
+      steps {
+        bat 'mvn clean'
+      }
     }
+    stage('Execute Running') {
+      steps {
+        bat 'mvn surefire:test -Dtest=Running_Buscar_Google'
+      }
+    }
+  }
+  post {
+    always {
+      archiveArtifacts(artifacts: 'target/', fingerprint: true)
+      junit 'target/cucumber.xml'
+      publishTestResults(serverAddress: 'http://35.235.105.137', projectKey: 'TBDD', filePath: 'target/cucumber-report/cucumber.json', format: 'Cucumber', autoCreateTestCases: false)
+
+    }
+
+  }
 }
