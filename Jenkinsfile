@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Clean Work Space') {
       steps {
-        bat 'mvn clean'
+        bat 'mvn clean install'
       }
     }
     stage('Execute Running') {
