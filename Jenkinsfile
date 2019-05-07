@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Download Feature Files') {
       steps {
-        downloadFeatureFiles(serverAddress: 'http://35.235.105.137', projectKey: 'TBDD', targetPath: 'src/test/resources/features')
+        downloadFeatureFiles(serverAddress: 'http://35.235.105.137', projectKey: 'TBDD', targetPath: 'src/test/java/feature')
       }
     }
     stage('Clean Work Space') {
