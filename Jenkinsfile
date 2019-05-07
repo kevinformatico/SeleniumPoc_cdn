@@ -1,5 +1,9 @@
 pipeline {
-
+   agent {
+       docker {
+         image 'markhobson/maven-chrome'
+       }
+    }
   stages {
     stage('Download Feature Files'){
             steps {
