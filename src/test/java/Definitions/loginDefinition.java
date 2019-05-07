@@ -23,7 +23,6 @@ public class loginDefinition {
 
     public loginDefinition(){
         driver= Hooks.driver;
-
     }
 
 
