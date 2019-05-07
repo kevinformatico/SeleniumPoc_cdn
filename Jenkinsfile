@@ -1,15 +1,10 @@
 pipeline {
-  agent {
-    docker {
-      image 'markhobson/maven-chrome'
-    }
 
-  }
   stages {
     stage('Download Feature Files'){
             steps {
-                downloadFeatureFiles serverAddress: 'http://rutadelservidor:puertodelservidor',
-                    projectKey: 'keydelproyecto',
+                downloadFeatureFiles serverAddress: 'http://35.235.105.137',
+                    projectKey: 'TBDD',
                     targetPath:'src/test/resources/features'
             }
         }
@@ -28,8 +23,8 @@ pipeline {
     always {
       archiveArtifacts(artifacts: 'target/', fingerprint: true)
       junit 'target/cucumber.xml'
-      publishTestResults  serverAddress: 'http://rutadelservidor:puertodelservidor',
-                          projectKey: 'keydelproyecto',
+      publishTestResults  serverAddress: 'http://35.235.105.137',
+                          projectKey: 'TBDD',
                           filePath:'target/cucumber-report/cucumber.json',
                           format: 'Cucumber',
                           autoCreateTestCases: false
