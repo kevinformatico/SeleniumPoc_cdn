@@ -122,34 +122,4 @@ public class Generics {
         };
     }
 
-
-
-    public void bdConectionWithQeury(String url, String username, String password,String query){
-
-        String dbUrl = "jdbc:oracle://localhost:3036/emp";
-        //Database Username
-        String username2 = "root";
-        //Database Password
-        String password2 = "guru99";
-        //Query to Execute
-        String query2 = "select *  from employee;";
-
-        Class.forName("com.vertica.jdbc.Driver");
-
-        Connection con = DriverManager.getConnection(dbUrl,username2,password2);
-        Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery(query2);
-
-        // While Loop to iterate through all data and print results
-        while (rs.next()){
-            String myName = rs.getString(1);
-            String myAge = rs.getString(2);
-            System. out.println(myName+"  "+myAge);
-        }
-        // closing DB Connection
-        con.close();
-
-    }
-
-
 }
