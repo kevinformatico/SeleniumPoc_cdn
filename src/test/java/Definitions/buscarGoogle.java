@@ -11,8 +11,10 @@ import static org.junit.Assert.assertTrue;
 
 public class buscarGoogle {
 
-    private WebDriver driver;
+    //coneccionDB baseDatos = new coneccionDB();
 
+
+    private WebDriver driver;
     public buscarGoogle(){
         driver= Hooks.driver;
     }
