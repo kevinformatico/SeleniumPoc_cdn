@@ -1,15 +1,17 @@
+package baseDatos;
+
 import java.io.IOException;
 import java.net.ConnectException;
 import java.sql.*;
 
 
 public class coneccionDB {
-    Connection connection = null;
+
     Statement stmt;
     ResultSet rset;
 
-    public static Connection getConexion(Connection connection) {
-
+    public Connection getConexion() {
+        Connection connection = null;
         String serverName = "200.14.169.238";
         String user = "VISTA_360_CN";
         String pass = "VISTA_360_CN_ORION2K16";
@@ -27,11 +29,10 @@ public class coneccionDB {
         return connection;
     }
 
-    public ResultSet RunQuery(String Query) throws IOException{
+    public ResultSet RunQuery(Connection connection , String Query) throws IOException{
         try{
             stmt = connection.createStatement();
             rset = stmt.executeQuery(Query);
-
         }
         catch(SQLException e1){
             System.out.println("Query Execution Error" );
@@ -40,7 +41,7 @@ public class coneccionDB {
         return rset;
     }
 
-    public void OracleCloseConnection() throws IOException {
+    public void OracleCloseConnection(Connection connection) throws IOException {
         try {
             connection.close();
         } catch (SQLException e1) {
