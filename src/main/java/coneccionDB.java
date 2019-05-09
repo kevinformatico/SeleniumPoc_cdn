@@ -46,7 +46,7 @@ public class coneccionDB {
         } catch (SQLException e1) {
             System.out.println("Query Execution Error");
             e1.printStackTrace();
-
+            System.out.println("nuevaBranch");
         }
     }
 }
