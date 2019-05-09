@@ -17,11 +17,10 @@ public class coneccionDB {
         String pass = "VISTA_360_CN_ORION2K16";
         String portNumber = "1521";
         String sid = "ORION";
-        String url = "jdbc:oracle:thin:@" + serverName + ":" + portNumber + ":" + sid;
+        String url = "jdbc:oracle:thin:@200.14.169.238:1521:ORION";
 
         try {
-            String driverClassName = "oracle.jdbc.driver.OracleDriver";
-            Class.forName(driverClassName);
+            Class.forName("oracle.jdbc.driver.OracleDriver");
             connection = DriverManager.getConnection(url,user,pass);
         }catch (Exception e) {
             e.printStackTrace();
