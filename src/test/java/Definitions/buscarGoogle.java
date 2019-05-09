@@ -5,14 +5,10 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import sun.security.util.PendingException;
 
 import static org.junit.Assert.assertTrue;
 
 public class buscarGoogle {
-
-    //coneccionDB baseDatos = new coneccionDB();
-
 
     private WebDriver driver;
     public buscarGoogle(){
