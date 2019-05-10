@@ -1,5 +1,5 @@
 package baseDatos;
-
+import java.sql.*;
 import java.io.IOException;
 import java.net.ConnectException;
 import java.sql.*;
@@ -10,21 +10,19 @@ public class coneccionDB {
     Statement stmt;
     ResultSet rset;
 
-    public Connection getConexion() {
+    public Connection getConexion() throws ClassNotFoundException, SQLException{
         Connection connection = null;
         String serverName = "200.14.169.238";
         String user = "VISTA_360_CN";
         String pass = "VISTA_360_CN_ORION2K16";
         String portNumber = "1521";
         String sid = "ORION";
-        String url = "jdbc:oracle:thin:@200.14.169.238:1521:ORION";
 
-        try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            connection = DriverManager.getConnection(url,user,pass);
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+        String cdn = "oracle.jdbc.driver.OracleDriver";
+        String url = "jdbc:oracle:thin:@200.14.169.238:1521:ORION";
+        Class.forName(cdn);
+        connection = DriverManager.getConnection(url,user,pass);
+
         return connection;
     }
 
