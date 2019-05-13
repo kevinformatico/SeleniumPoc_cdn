@@ -29,7 +29,7 @@ public class buscarGoogle {
         BuscarGoogle buscarGoogle = new BuscarGoogle(driver);
         buscarGoogle.buscarPalabra(palabra);
 
-        Connection conexion = cn.getConexion();
+        /*Connection conexion = cn.getConexion();
         ResultSet rs = cn.RunQuery(conexion,query);
 
         while (rs.next()) {
@@ -38,6 +38,8 @@ public class buscarGoogle {
         }
 
         cn.OracleCloseConnection(conexion);
+
+         */
     }
 
     @Then("^aparece informacion sobre \"(.*?)\"$")
