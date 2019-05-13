@@ -2,9 +2,9 @@ pipeline {
   agent any
   stages {
     stage('Download Feature Files') {
-          steps {
-            downloadFeatureFiles(serverAddress: 'http://35.235.105.137', projectKey: 'POC', targetPath: 'src/test/java/Feature')
-          }
+      steps {
+        downloadFeatureFiles(serverAddress: 'http://35.235.105.137', projectKey: 'POC', targetPath: 'src/test/java/Feature')
+      }
     }
 
     stage('Clean Work Space') {
@@ -22,7 +22,7 @@ pipeline {
     always {
       archiveArtifacts(artifacts: 'target/', fingerprint: true)
       junit 'target/cucumber.xml'
-      publishTestResults(serverAddress: 'http://35.235.105.137', projectKey: 'POC', filePath: 'target/cucumber.json', format: 'Cucumber', autoCreateTestCases: false)
+      publishTestResults(serverAddress: 'http://35.235.105.137', projectKey: 'POC', filePath: 'target/cucumber.json', format: 'Cucumber', autoCreateTestCases: true)
 
     }
   }
