@@ -10,16 +10,10 @@ public class coneccionDB {
     Statement stmt;
     ResultSet rset;
 
-    public Connection getConexion() throws ClassNotFoundException, SQLException{
+    public Connection getConexion(String serverName, String user, String pass, String portNumber, String sid) throws ClassNotFoundException, SQLException{
         Connection connection = null;
-        String serverName = "200.14.169.238";
-        String user = "VISTA_360_CN";
-        String pass = "VISTA_360_CN_ORION2K16";
-        String portNumber = "1521";
-        String sid = "ORION";
-
         String cdn = "oracle.jdbc.driver.OracleDriver";
-        String url = "jdbc:oracle:thin:@200.14.169.238:1521:ORION";
+        String url = "jdbc:oracle:thin:@"+serverName+":"+portNumber+"/"+sid;
         Class.forName(cdn);
         connection = DriverManager.getConnection(url,user,pass);
 

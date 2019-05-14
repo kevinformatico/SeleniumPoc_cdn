@@ -15,7 +15,11 @@ import static org.junit.Assert.assertTrue;
 public class buscarGoogle {
 
     coneccionDB cn = new coneccionDB();
-
+    String serverName = "200.14.169.238";
+    String user = "VISTA_360_CN";
+    String pass = "VISTA_360_CN_ORION2K16";
+    String portNumber = "1521";
+    String sid = "ORION";
 
     private WebDriver driver;
     public buscarGoogle(){
@@ -24,12 +28,13 @@ public class buscarGoogle {
 
     @When("^busco \"(.*?)\"$")
     public void busco(String palabra) throws Throwable {
-        String query = "SELECT RUT FROM CN_CLIENTES_BCO WHERE ROWNUM <= 1;";
 
         BuscarGoogle buscarGoogle = new BuscarGoogle(driver);
         buscarGoogle.buscarPalabra(palabra);
 
-        Connection conexion = cn.getConexion();
+        //PARA UTILIZAR LA CONSULTA A BD SE NECESITA RED DE BANCO
+        String query = "SELECT RUT FROM CN_CLIENTES_BCO WHERE ROWNUM <= 1";
+        Connection conexion = cn.getConexion(serverName,user,pass,portNumber,sid);
         ResultSet rs = cn.RunQuery(conexion,query);
 
         while (rs.next()) {
@@ -38,8 +43,6 @@ public class buscarGoogle {
         }
 
         cn.OracleCloseConnection(conexion);
-
-
     }
 
     @Then("^aparece informacion sobre \"(.*?)\"$")
