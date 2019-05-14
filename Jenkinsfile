@@ -24,6 +24,5 @@ pipeline {
       publishTestResults(serverAddress: 'http://35.235.105.137', projectKey: 'POC', filePath: 'target/cucumber.json', format: 'Cucumber', autoCreateTestCases: false)
 
     }
-       PRUEBA
   }
 }
