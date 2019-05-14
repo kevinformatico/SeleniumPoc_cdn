@@ -6,6 +6,11 @@ pipeline {
         downloadFeatureFiles(serverAddress: 'http://35.235.105.137', projectKey: 'POC', targetPath: 'src/test/java/Feature')
       }
     }
+    stage('Integrate JDBC') {
+      steps {
+        bat 'mvn install:install-file -Dfile=ojdbc6.jar -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.4 -Dpackaging=jar'
+      }
+    }
     stage('Clean Work Space') {
       steps {
         bat 'mvn clean install'
@@ -17,6 +22,7 @@ pipeline {
       }
     }
   }
+
   post {
     always {
       archiveArtifacts(artifacts: 'target/', fingerprint: true)
