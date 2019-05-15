@@ -6,7 +6,6 @@ pipeline {
         downloadFeatureFiles(serverAddress: 'http://35.235.105.137', projectKey: 'POC', targetPath: 'src/test/java/Feature')
       }
     }
-
     stage('Clean Work Space') {
       steps {
         bat 'mvn clean install'
@@ -18,11 +17,12 @@ pipeline {
       }
     }
   }
+
   post {
     always {
       archiveArtifacts(artifacts: 'target/', fingerprint: true)
       junit 'target/cucumber.xml'
-      publishTestResults(serverAddress: 'http://35.235.105.137', projectKey: 'POC', filePath: 'target/cucumber.json', format: 'Cucumber', autoCreateTestCases: true)
+      publishTestResults(serverAddress: 'http://35.235.105.137', projectKey: 'POC', filePath: 'target/cucumber.json', format: 'Cucumber', autoCreateTestCases: false)
 
     }
   }
