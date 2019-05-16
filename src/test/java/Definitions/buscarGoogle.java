@@ -30,7 +30,7 @@ public class buscarGoogle {
     public void busco(String palabra) throws Throwable {
 
         BuscarGoogle buscarGoogle = new BuscarGoogle(driver);
-        buscarGoogle.buscarPalabra(palabra);
+        buscarGoogle.buscar(palabra);
 
         //PARA UTILIZAR LA CONSULTA A BD SE NECESITA RED DE BANCO
         String query = "SELECT RUT FROM CN_CLIENTES_BCO WHERE ROWNUM <= 1";
