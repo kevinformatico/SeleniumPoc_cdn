@@ -1,5 +1,6 @@
 package Pages;
 
+import Interfaces.Buscador;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.SendKeysAction;
@@ -7,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
-public class BuscarGoogle extends Generics{
+public class BuscarGoogle extends Generics implements Buscador {
 
     WebDriver driver;
 
@@ -21,10 +22,9 @@ public class BuscarGoogle extends Generics{
     WebElement cajaBuscar;
 
 
-    public void buscarPalabra(String buscar){
+    public void buscar(String buscar) {
         waitForElementToBeVisible(cajaBuscar);
         cajaBuscar.sendKeys(buscar);
         cajaBuscar.submit();
     }
-
 }
