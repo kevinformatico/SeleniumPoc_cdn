@@ -9,3 +9,4 @@ Feature: Buscar en Google
     Examples:
       | buscar    |
       | autos     |
+
