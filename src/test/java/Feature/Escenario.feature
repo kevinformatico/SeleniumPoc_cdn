@@ -1,4 +1,4 @@
-@consultadecaratula
+
 Feature: Buscar usuario vista 360
 
 
